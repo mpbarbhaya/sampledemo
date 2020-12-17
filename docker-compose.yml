@@ -1,48 +1,16 @@
-# version: '3'
-
-# services:
-#   db:
-#     image: mysql:8
-#     ports:
-#       - '3307:3307'
-#     environment:
-#       - MYSQL_DATABASE='puc'
-#       - MYSQL_USER='root'
-#       - MYSQL_PASSWORD='root'
-#       - MYSQL_ROOT_PASSWORD='root'
-#       - MYSQL_HOST=''
-#       - DOCKER_HOST=''
-
-#     volumes:
-#       - /tmp/app/mysqld:/var/run/mysqld
-#       - ./db:/var/lib/mysql
-#   web:
-#     build: .
-#     command: python manage.py runserver 0.0.0.0:8000
-#     ports:
-#       - "8000:8000"
-#     volumes:
-#       - .:/app
-#       - /tmp/app/mysqld:/run/mysqld
-#     depends_on:
-#       - db
-
-
-
 web:
   build: .
-  # environment:
-    # MYENV: EXAMPLE
+  environment:
+    MYENV: EXAMPLE
   volumes:
-    - .:/code
+    - .:/sampleTest/djtestgit
 # web_migrate:
 #   extends:
 #     service: web
-#   command: python manage.py migrate
-  
-web_run:
-  extends:
-    service: web
+  command: python manage.py migrate
+# web_run:
+#   extends:
+#     service: web
   command: python manage.py runserver 0.0.0.0:8000
   ports:
     - "8000:8000"

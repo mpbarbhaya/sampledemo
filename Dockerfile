@@ -1,34 +1,22 @@
-# FROM python:3.8
-
-# ENV PYTHONUNBUFFERED 1
-
-# RUN mkdir /app
-
-# WORKDIR /app
-
-# COPY requirements.txt /app/requirements.txt
-# # COPY . /code/
-# RUN pip install virtualenv
-
-# RUN virtualenv venv
-
-# RUN source venv/bin/activate
-
-# RUN pip install -r requirements.txt
-
-# # ADD requirements.txt /my_app_dir/
-
-# COPY . /app
-
-# # ADD . /my_app_dir/
-
-
-
 FROM python:3.8
 ENV PYTHONUNBUFFERED 1
-RUN mkdir /code
-WORKDIR /code
-COPY requirements.txt /code/
-# RUN git clone http://192.168.2.202/BonoboGit/Backend-PUC-Application.git
+#install git
+RUN apt-get update
+RUN apt-get install -y git
+RUN mkdir /sampleTest
+RUN cd sampleTest
+RUN git clone https://github.com/mpbarbhaya/djtestgit.git
+# set working directory
+WORKDIR /sampleTest/djtestgit
+
+# RUN mkdir /code
+# WORKDIR /code
+# RUN pip install --upgrade pip
+COPY requirements.txt /sampleTest/djtestgit
+
 RUN pip install -r requirements.txt
-COPY . /code/
+COPY . /sampleTest/djtestgit
+
+# EXPOSE 8000
+
+# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
