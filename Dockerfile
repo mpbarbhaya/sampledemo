@@ -8,7 +8,7 @@ RUN cd sampleTest
 RUN git clone https://github.com/mpbarbhaya/djtestgit.git
 # set working directory
 WORKDIR /sampleTest/djtestgit
-#example
+#exampleasasd
 # RUN mkdir /code
 # WORKDIR /code
 # RUN pip install --upgrade pip
